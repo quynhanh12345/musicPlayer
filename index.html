@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Music player</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Main page -->
+    <div class="frame">
+        <div class="notch">
+            <div class="camera">
+                <div class="vone"></div>
+                <div class="vtwo"></div>
+            </div>
+        </div>
+        <div class="folder" id="firsthold">
+            <div class="nav">
+                <div class="option">
+                    <!-- <img src="../option.png" alt=""> -->
+                    <i class="fa fa-arrow-left" id="goback"></i>
+                </div>
+                <div class="mid">
+                    <h2>NOW PLAYING</h2>
+                </div>
+                <div class="v-level">
+                    <i class="fa fa-volume-up" id="volume" ondblclick="mute_sound()"></i>
+                    <div class="letter">
+                        <input type="range" name="volume_bar" value="90" min="0" max="100" onchange="volume_change()"
+                            id="vbar">
+                    </div>
+                </div>
+            </div>
+            <div class="artist-pic">
+                <img class="album" src="imgs/trieulotu1.jpg">
+            </div>
+            <marquee width="180px" scrollamount="5">
+                <h2 class="title">Khách Mời</h2>
+            </marquee>
+            <h3 class="artist">Trương Viễn</h3>
+
+            <div class="column">
+                <i id="like" class="fa fa-heart-o"></i>
+                <i id="playlist" class="fa fa-folder-o"></i>
+                <i id="info" class="fa fa-info" title=" 
+Title: Khách Mời 
+Artist: Trương Viễn 
+Album: trieulotu1 
+Duration: 05:31"></i>
+                <i id="mode" class="fa fa-moon-o"></i>
+            </div>
+
+            <div class="progress-cont">
+                <div class="time-slot">
+                    <div id="i-progress">0:00</div>
+                    <div id="f-progress">05:31</div>
+                    <div id="remain-progress">00:00</div>
+                </div>
+                <div class="progress-line" id="progress-line">
+                    <input type="range" name="progress" min="0" max="100" onchange="music_change()" value="0"
+                        id="progress">
+                </div>
+            </div>
+
+            <div class="icons">
+                <i class="fa fa-step-backward" id="prev" title="Previous"></i>
+                <i class="fa fa-play" id="play" title="Play"></i>
+                <i class="fa fa-step-forward" id="next" title="Next"></i>
+            </div>
+        </div>
+
+        <div class="playlist h-list">
+            <div id="playNav" class="bot-r">
+                <div class="right"><i class="fa fa-angle-up" id="down" onclick="toggle_down()"></i></div>
+            </div>
+            <div class="center v-class">
+                <div class="songdivs">
+                    <div class="songbox">
+                        <div class="img"><img src="imgs/trieulotu1.jpg" width="50px" alt=""></div>
+                        <div class="songbio">
+                            <div class="title">Khách Mời</div>
+                            <div class="s-artist">Trương Viễn</div>
+                            <div class="duration">05:31</div>
+                        </div>
+                    </div>
+                    <div class="songbox">
+                        <div class="img"><img src="imgs/trieulotu2.jpg" width="50px" alt=""></div>
+                        <div class="songbio">
+                            <div class="title">Gõ Đáng Yêu Rồi Nhấn Phím 5</div>
+                            <div class="s-artist">Mika</div>
+                            <div class="duration">03:50</div>
+                        </div>
+                    </div>
+                    <div class="songbox">
+                        <div class="img"><img src="imgs/trieulotu3.jpg" width="50px" alt=""></div>
+                        <div class="songbio">
+                            <div class="title">Câu Chuyện Nếu Như</div>
+                            <div class="s-artist">Superluckyqi</div>
+                            <div class="duration">03:29</div>
+                        </div>
+                    </div>
+                    <div class="songbox">
+                        <div class="img"><img src="imgs/trieulotu4.jpg" width="50px" alt=""></div>
+                        <div class="songbio">
+                            <div class="title">Ngu Hề Thán</div>
+                            <div class="s-artist">Văn Nhân Thính Thư</div>
+                            <div class="duration">03:31</div>
+                        </div>
+                    </div>
+                    <div class="songbox">
+                        <div class="img"><img src="imgs/trieulotu5.jpg" width="50px" alt=""></div>
+                        <div class="songbio">
+                            <div class="title">Yết Vô Hiết</div>
+                            <div class="s-artist">Tưởng Tuyết Nhi</div>
+                            <div class="duration">03:22</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Songs menu list -->
+    <audio src="songs\Hôn Lễ Của Em _ Hứa Quang Hán x Chương Nhược Nam _ Khách Mời - Trương Viễn.mp3"
+        id="sound"></audio>
+
+    <script src="run.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
